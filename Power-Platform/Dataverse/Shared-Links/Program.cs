@@ -133,6 +133,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
             Entity row = new("sharedlinksetting");
             row.Attributes = new AttributeCollection()
             {
+                // TODO Pass value as a lookup
                 {"extensionofrecordid", entRef },
                 {"isenabledforsharedlinkcreation", true }
             };
