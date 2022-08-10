@@ -133,6 +133,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
             Entity row = new("sharedlinksetting");
             row.Attributes = new AttributeCollection()
             {
+                // TODO This code is wrong. Teh reference should contain the ID of the table definition.
                 {"extensionofrecordid", entRef },
                 {"isenabledforsharedlinkcreation", true }
             };
