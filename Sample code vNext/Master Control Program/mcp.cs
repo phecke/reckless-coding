@@ -11,9 +11,9 @@ namespace Master_Control_Program
     {
         #region Cloud service connection
         // TODO Place this info in a settings.json file.
-        static string url = "https://crmue.crm.dynamics.com";
-        static string userName = "pehecke@crmue.onmicrosoft.com";
-        static string password = "Pursuit17@@";
+        static string url = "https://myorg.crm.dynamics.com";
+        static string userName = "someone@myorg.onmicrosoft.com";
+        static string password = "mypassword";
 
         // This service connection string uses the info provided above.
         // The AppId and RedirectUri used here are provided for sample code testing.
