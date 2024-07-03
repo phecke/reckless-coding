@@ -190,9 +190,10 @@ namespace PowerPlatform.Dataverse.CodeSamples
         public void GrantAccessUsing_SharedLink(ServiceClient client, 
             EntityReference entRef, Guid linkId)
         {
+            string recordUrl = @"https://{0}/main.aspx?pagetype=entityrecord&etn={1}&id={2}&shareLink={3}";
+
             Uri uri = new(String.Format(
-                "https://{0}/main.aspx?pagetype=entityrecord&etn={1}&id={2}&shareLink={3}",
-                client.ConnectedOrgUriActual.Host,
+                recordUrl, client.ConnectedOrgUriActual.Host,
                 entRef.LogicalName, entRef.Id, linkId ));
 
             GrantAccessUsingSharedLinkRequest request = new()
