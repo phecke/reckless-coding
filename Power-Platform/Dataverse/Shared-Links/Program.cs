@@ -35,7 +35,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
             // Get the path to the appsettings file. If the environment variable is set,
             // use that file path. Otherwise, use the runtime folder's settings file.
             string? path = Environment.GetEnvironmentVariable("DATAVERSE_APPSETTINGS");
-            if (path == null) path = "appsettings.json";
+            if (path == null) path = "Solution items/appsettings.json";
 
             // Load the app's configuration settings from the JSON file.
             Configuration = new ConfigurationBuilder()
@@ -120,22 +120,15 @@ namespace PowerPlatform.Dataverse.CodeSamples
         /// <see cref="https://docs.microsoft.com/power-apps/developer/data-platform/reference/entities/sharedlinksetting"/>
         public void Enable_SharedLink(ServiceClient client, EntityReference entRef)
         {
-        #if PREVIEW
-            if(entRef.LogicalName != "account"  && entRef.LogicalName != "contact" &&
-               entRef.LogicalName != "case" && entRef.LogicalName != "opportunity")
-            {
-                throw new Exception(
-                    string.Format("Table '{0}' does not currently support shared links.",
-                    entRef.LogicalName));
-            };
-        #endif
-
             Entity row = new("sharedlinksetting");
             row.Attributes = new AttributeCollection()
             {
-                // TODO Pass value as a lookup
-                {"extensionofrecordid", entRef },
-                {"isenabledforsharedlinkcreation", true }
+                // The "Entity" table contains a row of data that defines every other table.
+                // Here we use the ID of the account table that was obtained from the Entity table
+                // using Power Apps under Tables > Entity > Entity columns and data. 
+                {"extensionofrecordid", new EntityReference("account", new Guid("70816501-edb9-4740-a16c-6a5efbc05d84")) },
+                {"isenabledforsharedlinkcreation", true },
+                {"name", "Account Sharedlink setting" }
             };
 
             Guid settingId = client.Create(row);
