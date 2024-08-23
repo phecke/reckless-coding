@@ -23,13 +23,13 @@ So if you're interested in developing a Dataverse compatible ServiceBus listener
 
 ## Transitioning to Azure relay messaging
 
-All supported Dataverse to Azure ServiceBus connection types, except for the hybrid relay connection, target .NET Framework and use the (now) deprecated [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) package and the [Microsoft.ServiceBus](/dotnet/api/microsoft.servicebus?view=azure-dotnet-legacy) namespace. Those non-relay connections continue to be supported for some time since the Microsoft.ServiceBus APIs are supported by Microsoft until the later part of year 2026.
+All supported Dataverse to Azure ServiceBus connection types, except for the hybrid relay connection, target .NET Framework and use the (now) deprecated [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) package and the [Microsoft.ServiceBus](https://learn.microsoft.com/dotnet/api/microsoft.servicebus?view=azure-dotnet-legacy) namespace. Those non-relay connections continue to be supported for some time since the Microsoft.ServiceBus APIs are supported by Microsoft until the later part of year 2026.
 
 Once Dataverse and the Plug-in Registration tool are updated to use the newer Azure ServiceBus messaging technologies, our documentation and code samples will be updated. For now, we provide this article and related code sample for you to get started developing a listener app that uses the Microsoft.Azure.Relay namespace and can target .NET Core.
 
 ## Configure an Azure namespace and connection
 
-Read the Azure documentation, [Get started with Relay Hybrid Connections HTTP requests in .NET](/azure/azure-relay/relay-hybrid-connections-http-requests-dotnet-get-started#create-a-namespace), on how to configure a namespace and hybrid relay connection.
+Read the Azure documentation, [Get started with Relay Hybrid Connections HTTP requests in .NET](https://learn.microsoft.com/azure/azure-relay/relay-hybrid-connections-http-requests-dotnet-get-started#create-a-namespace), on how to configure a namespace and hybrid relay connection.
 
 Here's an example namespace configuration named contoso-relay.
 :::image type="content" source="media/azure-relay-namespace.png" alt-text="Example Azure namespace." lightbox="media/azure-relay-namespace.png":::
@@ -103,7 +103,7 @@ class Program
 }
 ```
 
-The full code sample is available in the [PowerApps-Samples](https://github.com/microsoft/PowerApps-Samples/) repo at [dataverse/orgsvc/C#-NETCore/Azure](https://github.com/microsoft/PowerApps-Samples/blob/master/dataverse/orgsvc/C%23-NETCore/Azure/ServiceBus-HybridRelayListener/Program.cs).
+Full code sample: [Azure-hybrid relay listener](../Azure-hybrid%20relay%20listener/)
 
 ## Configure a service endpoint and step
 
@@ -124,5 +124,5 @@ You can access the system jobs in Power Apps under **Advanced settings** > **Set
 
 ## Related content
 
-- [Azure integration](azure-integration.md)
+- [Azure integration](https://learn.microsoft.com/power-apps/developer/data-platform/azure-integration)
 - [Register a Dataverse service endpoint](azure-register-service-endpoint.md)

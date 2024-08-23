@@ -23,9 +23,9 @@ Here's a list of prerequisites for registering a service endpoint.
 - Configured Service Bus namespace.
 - Configured Service Bus hybrid relay connection with Send and Listen SAS policy permissions.
 
-Detailed information on configuring an Azure namespace and hybrid connection can be found in this article: [Get started with Relay Hybrid Connections HTTP requests in .NET](/azure/azure-relay/relay-hybrid-connections-http-requests-dotnet-get-started).
+Detailed information on configuring an Azure namespace and hybrid connection can be found in this article: [Get started with Relay Hybrid Connections HTTP requests in .NET](https://learn.microsoft.com/azure/azure-relay/relay-hybrid-connections-http-requests-dotnet-get-started).
 
-To install the PRT, see [Dataverse development tools](download-tools-nuget.md).
+To install the PRT, see [Dataverse development tools](https://learn.microsoft.com/power-apps/developer/data-platform/download-tools-nuget).
 
 ## Obtain Azure namespace and hybrid connection information
 
@@ -79,5 +79,5 @@ If you aren't ready to test sending the Dataverse remote execution context to Az
 
 ## Related content
 
-- [Azure integration](azure-integration.md)
+- [Azure integration](https://learn.microsoft.com/power-apps/developer/data-platform/azure-integration)
 - [Use a hybrid relay connection](azure-hybrid-relay-connection.md)

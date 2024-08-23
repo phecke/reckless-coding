@@ -14,7 +14,7 @@ This code sample demonstrates an Azure ServiceBus listener app using a hybrid re
 
 Our current Plug-in Registration Tool (PRT) and other listener app code samples support the deprecated [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) package and Microsoft.ServiceBus namespace. This sample demonstrates how to write a listener app using the newer Azure messaging APIs [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay) while still being compatible with Dataverse and the PRT.
 
-Related articles: [Azure integration](https://learn.microsoft.com/power-apps/developer/data-platform/azure-integration), [Use a hybrid relay connection](https://learn.microsoft.com/power-apps/developer/data-platform/azure-hybrid-relay-connection)
+Related articles: [Azure integration](https://learn.microsoft.com/power-apps/developer/data-platform/azure-integration), [Use a hybrid relay connection](../Articles/azure-hybrid-relay-connection.md)
 
 ## About the sample code
 
@@ -37,8 +37,8 @@ Some additional notes about the sample:
 
 ## Prerequisites
 
-- Configured Azure ServiceBus hybrid relay connection. See [Configure an Azure namespace and connection](https://learn.microsoft.com/power-apps/developer/data-platform/azure-hybrid-relay-connections#configure-an-azure-namespace-and-connection)
-- Dataverse service endpoint and step configured using the Plug-in Registration Tool. See [Register a Dataverse service endpoint](https://learn.microsoft.com/power-apps/developer/data-platform/azure-register-service-endpoint)
+- Configured Azure ServiceBus hybrid relay connection. See [Configure an Azure namespace and connection](../Articles/azure-hybrid-relay-connection.md#configure-an-azure-namespace-and-connection)
+- Dataverse service endpoint and step configured using the Plug-in Registration Tool. See [Register a Dataverse service endpoint](../Articles/azure-register-service-endpoint.md)
 
 ## How to build and run the code sample(s)
 
