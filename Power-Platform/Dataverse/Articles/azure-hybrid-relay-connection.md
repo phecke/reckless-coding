@@ -31,11 +31,13 @@ Once Dataverse and the Plug-in Registration tool are updated to use the newer Az
 
 Read the Azure documentation, [Get started with Relay Hybrid Connections HTTP requests in .NET](https://learn.microsoft.com/azure/azure-relay/relay-hybrid-connections-http-requests-dotnet-get-started#create-a-namespace), on how to configure a namespace and hybrid relay connection.
 
-Here's an example namespace configuration named contoso-relay.
-:::image type="content" source="media/azure-relay-namespace.png" alt-text="Example Azure namespace." lightbox="media/azure-relay-namespace.png":::
+Here's an example namespace configuration named contoso-relay.<p/>
+!["Example Azure namespace."](media/azure-relay-namespace.png)
+<!-- :::image type="content" source="media/azure-relay-namespace.png" alt-text="Example Azure namespace." lightbox="media/azure-relay-namespace.png"::: -->
 
-Here's an example hybrid relay connection configuration named contoso-hc.
-:::image type="content" source="media/azure-hybrid-connection.png" alt-text="Example hybrid relay connection." lightbox="media/azure-hybrid-connection.png":::
+Here's an example hybrid relay connection configuration named contoso-hc.<p/>
+!["Example hybrid relay connection."](media/azure-hybrid-connection.png)
+<!-- :::image type="content" source="media/azure-hybrid-connection.png" alt-text="Example hybrid relay connection." lightbox="media/azure-hybrid-connection.png"::: -->
 
 ## Write a listener app
 

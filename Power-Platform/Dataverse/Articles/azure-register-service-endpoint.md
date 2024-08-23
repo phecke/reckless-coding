@@ -58,15 +58,17 @@ Create a service endpoint using the PRT by following these instructions.
 1. Check the option **Let's Start with the connection string...** and paste the primary connection string you saved from the Azure portal. The string starts with "Endpoint=sb://".
 1. Select **Next**.
 1. Fill out the **Service Endpoint Registration** form. Most of the data is auto populated from the primary connection string you provided.
-1. Be sure to set the **Designation Type** as **Rest**, set **Path** to the name of your hybrid connection, and add the path to the end of the **NameSpace Address**.
-    :::image type="content" source="media/azure-service-endpoint-registration.PNG" alt-text="Service endpoint registration.":::
+1. Be sure to set the **Designation Type** as **Rest**, set **Path** to the name of your hybrid connection, and add the path to the end of the **NameSpace Address**.<p/>
+    !["Service endpoint registration."](media/azure-service-endpoint-registration.PNG)
+    <!-- :::image type="content" source="media/azure-service-endpoint-registration.PNG" alt-text="Service endpoint registration."::: -->
 1. Select **Save**.
 
 Next, we're going to add a step to the service endpoint. The step indicates under what conditions the remote execution context is posted to the service bus.
 
 1. Select **Register** > **Register New Step**.
-1. Fill out the displayed form as show in the figure using appropriate values for your configuration.
-    :::image type="content" source="media/azure-service-endpoint-step.png" alt-text="Step registration.":::
+1. Fill out the displayed form as show in the figure using appropriate values for your configuration.<p/>
+    !["Step registration."](media/azure-service-endpoint-step.png)
+    <!-- :::image type="content" source="media/azure-service-endpoint-step.png" alt-text="Step registration."::: -->
 1. Select **Register New Step**.
 
 Use the appropriate message, primary entity, service endpoint event handler, etc. for your setup. Leave the stage, execution mode, and deployment values as shown.
