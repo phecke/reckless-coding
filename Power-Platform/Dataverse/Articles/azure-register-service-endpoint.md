@@ -59,7 +59,7 @@ Create a service endpoint using the PRT by following these instructions.
 1. Select **Next**.
 1. Fill out the **Service Endpoint Registration** form. Most of the data is auto populated from the primary connection string you provided.
 1. Be sure to set the **Designation Type** as **Rest**, set **Path** to the name of your hybrid connection, and add the path to the end of the **NameSpace Address**.<p/>
-    !["Service endpoint registration."](media/azure-service-endpoint-registration.PNG)
+    !["Service endpoint registration."](media/azure-service-endpoint-registration.png)
     <!-- :::image type="content" source="media/azure-service-endpoint-registration.PNG" alt-text="Service endpoint registration."::: -->
 1. Select **Save**.
 
