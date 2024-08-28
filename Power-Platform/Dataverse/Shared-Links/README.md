@@ -8,7 +8,7 @@ The provided code samples are listed below.
 
 |Sample folder|Description|Build target|
 |---|---|---|
-|shared-links|Demonstrates enabling, creating, retrieving, and revoking a shared link.|.NET 6|
+|shared-links|Demonstrates enabling, creating, retrieving, and revoking a shared link.|.NET 8|
 
 ## Instructions
 
