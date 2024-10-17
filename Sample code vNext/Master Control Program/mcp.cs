@@ -1,7 +1,7 @@
-﻿using Microsoft.PowerPlatform.Dataverse.Client;
+﻿using GettingStarted;
+using Microsoft.Extensions.Configuration;
+using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.Xrm.Sdk;
-using GettingStarted;
-using Microsoft.Extensions.Configuration; 
 
 namespace Master_Control_Program
 {
@@ -33,41 +33,19 @@ namespace Master_Control_Program
 
         static void Main(string[] args)
         {
-            EntityCollection entityStore;
-            IPowerSample app;
-
             mcp mcpApp = new();
+            IPowerSample app = new CreateUpdateDelete();
 
-            try
-            {
-                // Create a Dataverse service client using the default connection string.
-                ServiceClient serviceClient =
-                   new(mcpApp.Configuration.GetConnectionString("default"));
+            // Create a Dataverse service client using the default connection string.
+            ServiceClient serviceClient = new(mcpApp.Configuration.GetConnectionString("default"));
 
-                app = new CreateUpdateDelete();
-                entityStore = app.Setup(serviceClient);
+            EntityCollection entityStore = app.Setup(serviceClient);
 
-                try
-                {
-                    if (app.Run(serviceClient, entityStore) == false)
-                        Console.WriteLine(typeof(CreateUpdateDelete) +
-                                ".Run() method did not complete successfully.");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(typeof(CreateUpdateDelete) + " terminated with an exception.");
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    app.Cleanup(serviceClient, entityStore);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("The program unable to establish a connection with the Dataverse web service.");
-                Console.WriteLine(ex.Message);
-            }
+            if (app.Run(serviceClient, entityStore) == false)
+                Console.WriteLine( typeof(CreateUpdateDelete)
+                    + ".Run() method did not complete successfully.");
+
+            app.Cleanup(serviceClient, entityStore);
 
             // Pause the console so it does not close.
             Console.WriteLine("Press any key to exit.");
