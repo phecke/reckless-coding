@@ -25,7 +25,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
         /// <summary>
         /// Storage for table row references created by this program for later use.
         /// </summary>
-        private static Dictionary<string,EntityReference> entityStore = new();
+        private static Dictionary<string, EntityReference> entityStore = new();
 
         /// <summary>
         /// Constructor. Loads the application configuration settings from a JSON file.
@@ -56,7 +56,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
             // Obtain information about the table row created in Setuo().
             entityStore.TryGetValue("Fourth Coffee", out EntityReference? account);
 
-            if( account != null )
+            if (account != null)
             {
                 // Enable link sharing on the table row, then create a shared link
                 // with read-write access to the row.
@@ -64,7 +64,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
                 Console.WriteLine(
                     "Shared links enabled for {0} '{1}'", account.LogicalName, account.Name);
 
-                Guid linkId = app.Create_SharedLink(client, account, 
+                Guid linkId = app.Create_SharedLink(client, account,
                     AccessRights.ReadAccess | AccessRights.WriteAccess);
                 Console.WriteLine(
                     "Shared link created for {0} '{1}'", account.LogicalName, account.Name);
@@ -73,7 +73,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
                 EntityCollection rowSharedLinks = app.Retrieve_SharedLinks(client, account);
                 Console.WriteLine(
                     "Shared links for {0} '{1}'", account.LogicalName, account.Name);
-                for(int i=0; i<rowSharedLinks.TotalRecordCount; i++)
+                for (int i = 0; i < rowSharedLinks.TotalRecordCount; i++)
                 {
                     Console.WriteLine("\tShared link [ID:{0}]", rowSharedLinks.Entities[i].Id);
                 }
@@ -105,8 +105,8 @@ namespace PowerPlatform.Dataverse.CodeSamples
         {
             // A new account row.
             Guid id = client.Create(
-                new Entity("Fourth Coffee") 
-                    { LogicalName = "account" }
+                new Entity("Fourth Coffee")
+                { LogicalName = "account" }
             );
             entityStore.Add("Fourth Coffee", new EntityReference("account", id));
         }
@@ -150,10 +150,10 @@ namespace PowerPlatform.Dataverse.CodeSamples
             GenerateSharedLinkRequest request = new()
             {
                 Target = entRef,
-                SharedRights = rights   
+                SharedRights = rights
             };
 
-            GenerateSharedLinkResponse response = 
+            GenerateSharedLinkResponse response =
                 (GenerateSharedLinkResponse)client.Execute(request);
 
             EntityReference linkRef = new("shareLink", (Guid)response.Results["shareLink"]);
@@ -169,7 +169,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
         /// <param name="entRef">The target table row.</param>
         /// <returns>A collection of shared links for the table row.</returns>
         /// <see cref="https://docs.microsoft.com/dotnet/api/microsoft.crm.sdk.messages.retrievesharedlinksrequest"/>
-        public EntityCollection Retrieve_SharedLinks(ServiceClient client, 
+        public EntityCollection Retrieve_SharedLinks(ServiceClient client,
             EntityReference entRef)
         {
             RetrieveSharedLinksRequest request = new() { Target = entRef };
@@ -187,14 +187,14 @@ namespace PowerPlatform.Dataverse.CodeSamples
         /// <param name="entRef">The target table row.</param>
         /// <param name="linkId">The shared link ID.</param>
         /// <see cref="https://docs.microsoft.com/dotnet/api/microsoft.crm.sdk.messages.grantaccessusingsharedlinkrequest"/>
-        public void GrantAccessUsing_SharedLink(ServiceClient client, 
+        public void GrantAccessUsing_SharedLink(ServiceClient client,
             EntityReference entRef, Guid linkId)
         {
-            string recordUrl = @"https://{0}/main.aspx?pagetype=entityrecord&etn={1}&id={2}&shareLink={3}";
+            string recordUrl = @"https://{0}/main.aspx?pagetype=entityrecord&amp;etn={1}&amp;id={2}&amp;shareLink={3}";
 
             Uri uri = new(String.Format(
                 recordUrl, client.ConnectedOrgUriActual.Host,
-                entRef.LogicalName, entRef.Id, linkId ));
+                entRef.LogicalName, entRef.Id, linkId));
 
             GrantAccessUsingSharedLinkRequest request = new()
             { RecordUrlWithSharedLink = uri.ToString() };
@@ -218,8 +218,8 @@ namespace PowerPlatform.Dataverse.CodeSamples
                 Target = entRef,
                 SharedRights = rights
             };
-            
-            RevokeSharedLinkResponse response = 
+
+            RevokeSharedLinkResponse response =
                 (RevokeSharedLinkResponse)client.Execute(request);
         }
 
@@ -231,17 +231,17 @@ namespace PowerPlatform.Dataverse.CodeSamples
         /// <see cref="https://docs.microsoft.com/dotnet/api/microsoft.powerplatform.dataverse.client.serviceclient.delete"/>
         public void Cleanup(ServiceClient client)
         {
-            while(entityStore.Count> 0)
+            while (entityStore.Count > 0)
             {
-                KeyValuePair<string,EntityReference> kv = entityStore.Last();
-                var key = kv.Key;  var entRef = kv.Value;
+                KeyValuePair<string, EntityReference> kv = entityStore.Last();
+                var key = kv.Key; var entRef = kv.Value;
 
                 try
                 {
                     entityStore.Remove(key);
                     client.Delete(entRef.LogicalName, entRef.Id);
                 }
-                catch( Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine(
                         "Table '{0}' row '{1}' could not be deleted..skipping.",
