@@ -8,9 +8,13 @@ page_type: sample
 description: "This sample demonstrates the Azure ServiceBus interface to Dataverse."
 ---
 
-# Azure ServiceBus hybrid relay listener app
+# Azure ServiceBus hybrid relay listener app (experimental)
 
 This code sample demonstrates an Azure ServiceBus listener app using a hybrid relay connection to Microsoft Dataverse. The hybrid relay is the only connection type that Dataverse currently supports when using the newer Azure ServiceBus messaging APIs.
+
+> [!IMPORTANT]
+> The interfacing of an Azure ServieBus hybrid relay connection to Dataverse is experimental and unsupported.
+> There is no guarantee that this interface will be operational or supported in the future.
 
 Our current Plug-in Registration Tool (PRT) and other listener app code samples support the deprecated [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) package and Microsoft.ServiceBus namespace. This sample demonstrates how to write a listener app using the newer Azure messaging APIs [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay) while still being compatible with Dataverse and the PRT.
 
