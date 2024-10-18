@@ -1,4 +1,4 @@
-﻿namespace GettingStarted
+﻿namespace PowerPlatform.Dataverse.CodeSamples
 {
     /// <summary>
     /// Defines an interface for a code sample that accesses a cloud service.

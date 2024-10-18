@@ -1,62 +1,53 @@
-﻿using Microsoft.PowerPlatform.Dataverse.Client;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.Xrm.Sdk;
-using GettingStarted;
 
-namespace Master_Control_Program
+namespace PowerPlatform.Dataverse.CodeSamples
 {
     /// <summary>
     /// Master control program level 1 (basic).
-    /// </summary>
+    /// </summary> 
     internal class mcp
     {
-        #region Cloud service connection
-        // TODO Place this info in a settings.json file.
-        static string url = "https://myorg.crm.dynamics.com";
-        static string userName = "someone@myorg.onmicrosoft.com";
-        static string password = "mypassword";
+        /// <summary>
+        /// Contains the application's configuration settings. 
+        /// </summary>
+        IConfiguration Configuration { get; }
 
-        // This service connection string uses the info provided above.
-        // The AppId and RedirectUri used here are provided for sample code testing.
-        static string connectionString = $@"
-            AuthType = OAuth;
-            Url = {url};
-            UserName = {userName};
-            Password = {password};
-            AppId = 51f81489-12ee-4a9e-aaae-a2591f45987d;
-            RedirectUri = app://58145B91-0C36-4500-8554-080854F2AC97;
-            LoginPrompt=Auto;
-            RequireNewInstance = True";
-        #endregion Cloud service connection
+        /// <summary>
+        /// Constructor. Loads the application configuration settings from a JSON file.
+        /// </summary>
+        mcp()
+        {
+            // Get the path to the appsettings file. If the environment variable is set,
+            // use that file path. Otherwise, use the runtime folder's settings file.
+            string? path = Environment.GetEnvironmentVariable("DATAVERSE_APPSETTINGS");
+            if (path == null) path = "appsettings.json";
+
+            // Load the app's configuration settings from the JSON file.
+            Configuration = new ConfigurationBuilder()
+                .AddJsonFile(path, optional: false, reloadOnChange: true)
+                .Build();
+        }
 
         static void Main(string[] args)
         {
-            try
-            {
-                // Connect to the Dataverse web service.
-                ServiceClient client = new ServiceClient(connectionString);   
+            mcp mcpApp = new();
 
-                try
-                {
-                    IPowerSample app = new CreateUpdateDelete();
-                    EntityCollection entityStore = app.Setup(client);
+            // Create a web service client using the default connection string.
+            ServiceClient serviceClient = 
+                new(mcpApp.Configuration.GetConnectionString("default"));
 
-                    if (app.Run(client, entityStore) == false)
-                        Console.WriteLine(typeof(CreateUpdateDelete) + 
-                            ".Run() method did not complete successfully.");
+            IPowerSample app = new TelemetryUsingILogger(mcpApp.Configuration);
 
-                    app.Cleanup(client, entityStore);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(typeof(CreateUpdateDelete) + " terminated with an exception.");
-                    Console.WriteLine(ex.Message);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("MCP was unable to establish a connection with the web service");
-                Console.WriteLine(ex.Message);
-            }
+            EntityCollection entityStore = app.Setup(serviceClient);
+
+            if (app.Run(serviceClient, entityStore) == false)
+                Console.WriteLine( typeof(CreateUpdateDelete)
+                    + ".Run() method did not complete successfully.");
+
+            app.Cleanup(serviceClient, entityStore);
+            serviceClient.Dispose();
 
             // Pause the console so it does not close.
             Console.WriteLine("Press any key to exit.");

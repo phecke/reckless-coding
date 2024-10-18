@@ -1,7 +1,7 @@
 ﻿using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.Xrm.Sdk;
 
-namespace GettingStarted
+namespace PowerPlatform.Dataverse.CodeSamples
 {
     /// <summary>
     /// Defines an interface for a code sample that accesses Power Platform.
@@ -14,7 +14,8 @@ namespace GettingStarted
         /// </summary>
         /// <param name="client">Configured web service client.</param>
         /// <returns>Collection of entity instances.</returns>
-        public virtual EntityCollection Setup(ServiceClient client) { return new EntityCollection(); }
+        public virtual EntityCollection Setup(ServiceClient client) 
+        { return new EntityCollection(); }
 
         /// <summary>
         /// Performs the main function of the code sample.
@@ -22,7 +23,8 @@ namespace GettingStarted
         /// <param name="client">Configured web service client.</param>
         /// <param name="entityStore">Collection of entity instances.</param>
         /// <returns>True if successful; otherwise false.</returns>
-        public virtual bool Run(ServiceClient client, EntityCollection entityStore) { return false; }
+        public virtual bool Run(ServiceClient client, EntityCollection entityStore) 
+        { return false; }
 
         /// <summary>
         /// Deletes any entity instances, in reverse order, stored in the collection.
@@ -31,14 +33,23 @@ namespace GettingStarted
         /// <param name="entityStore">Collection of entity instances.</param>
         public virtual void Cleanup(ServiceClient client, EntityCollection entityStore)
         {
-            if (entityStore != null && entityStore.Entities.Count > 0)
+            if (client.IsReady && entityStore != null && entityStore.Entities.Count > 0)
             {
-                Entity? entity;
-
                 for(int i = entityStore.Entities.Count-1; i >= 0; i--)
                 {
-                    entity = entityStore.Entities[i];
-                    client.Delete(entity.LogicalName, entity.Id);
+                    Entity entity = entityStore.Entities[i];
+
+                    try
+                    {
+                        client.Delete(entity.LogicalName, entity.Id);
+                        entityStore.Entities.RemoveAt(i);
+                    }
+                    catch (System.Exception)
+                    {
+                        Console.WriteLine("Failed to delete the {0} with ID {1}.", 
+                            entity.LogicalName, entity.Id);
+                        Console.WriteLine("/tReason: " + client.LastException.Message);
+                    }
                 }
             }
         }
