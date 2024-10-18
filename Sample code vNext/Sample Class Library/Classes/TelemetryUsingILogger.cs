@@ -37,6 +37,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
                            .AddConfiguration(_config.GetSection("Logging")));
 
             // Dispose of the existing client and create a new one with logging.
+            // Logging can only be added when the client is created.
             client.Dispose();
             client = new ServiceClient(
                 dataverseConnectionString: _config.GetConnectionString("default"),
