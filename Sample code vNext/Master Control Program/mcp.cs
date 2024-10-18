@@ -33,11 +33,12 @@ namespace PowerPlatform.Dataverse.CodeSamples
         static void Main(string[] args)
         {
             mcp mcpApp = new();
-            IPowerSample app = new CreateUpdateDelete();
 
             // Create a web service client using the default connection string.
             ServiceClient serviceClient = 
                 new(mcpApp.Configuration.GetConnectionString("default"));
+
+            IPowerSample app = new TelemetryUsingILogger(mcpApp.Configuration);
 
             EntityCollection entityStore = app.Setup(serviceClient);
 
@@ -46,6 +47,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
                     + ".Run() method did not complete successfully.");
 
             app.Cleanup(serviceClient, entityStore);
+            serviceClient.Dispose();
 
             // Pause the console so it does not close.
             Console.WriteLine("Press any key to exit.");
