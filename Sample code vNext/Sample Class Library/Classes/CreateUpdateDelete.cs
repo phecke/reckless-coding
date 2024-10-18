@@ -2,7 +2,7 @@
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 
-namespace GettingStarted   
+namespace PowerPlatform.Dataverse.CodeSamples
 {
     /// <summary>
     /// Demonstrates the Create, Update, Retrieve, and Delete service client methods.
@@ -45,7 +45,7 @@ namespace GettingStarted
             Console.WriteLine("Retrieved account name: {0}, postal code: {1}",
                 retrievedAccount["name"], retrievedAccount["address2_postalcode"]);
 
-            return (true);
+            return true;
         }
     }
 }

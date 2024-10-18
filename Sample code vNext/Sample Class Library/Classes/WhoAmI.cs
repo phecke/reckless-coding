@@ -2,12 +2,12 @@
 using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.Xrm.Sdk;
 
-namespace GettingStarted
+namespace PowerPlatform.Dataverse.CodeSamples
 {
     /// <summary>
     /// Demonstrates executing a WhoAmI message request and response.
     /// </summary>
-    public class WhoAmI: IPowerSample
+    public class WhoAmI : IPowerSample
     {
         /// <summary>
         /// Sends a WhoAmI request to the web service to obtain information
@@ -23,7 +23,7 @@ namespace GettingStarted
                 (WhoAmIResponse)client.Execute(new WhoAmIRequest());
 
             Console.WriteLine("User ID is {0}.", response.UserId);
-            return (true);
+            return true;
         }
     }
 }

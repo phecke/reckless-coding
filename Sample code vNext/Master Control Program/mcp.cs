@@ -1,13 +1,12 @@
-﻿using GettingStarted;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.Xrm.Sdk;
 
-namespace Master_Control_Program
+namespace PowerPlatform.Dataverse.CodeSamples
 {
     /// <summary>
     /// Master control program level 1 (basic).
-    /// </summary>
+    /// </summary> 
     internal class mcp
     {
         /// <summary>
@@ -36,8 +35,9 @@ namespace Master_Control_Program
             mcp mcpApp = new();
             IPowerSample app = new CreateUpdateDelete();
 
-            // Create a Dataverse service client using the default connection string.
-            ServiceClient serviceClient = new(mcpApp.Configuration.GetConnectionString("default"));
+            // Create a web service client using the default connection string.
+            ServiceClient serviceClient = 
+                new(mcpApp.Configuration.GetConnectionString("default"));
 
             EntityCollection entityStore = app.Setup(serviceClient);
 
