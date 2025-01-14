@@ -1,0 +1,11 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Peter Hecke",
+    "classifications": [
+        "Common",
+        "Console"
+    ],
+    "identity": "Microsoft.PowerPlatform.Dataverse.ConsoleTemplate.CSharp",
+    "name": "Dataverse SDK Console Application",
+    "shortName": "dvsdkconsole"
+}

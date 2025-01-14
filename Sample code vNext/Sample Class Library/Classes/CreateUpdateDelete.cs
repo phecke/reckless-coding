@@ -2,7 +2,7 @@
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 
-namespace PowerPlatform.Dataverse.CodeSamples
+namespace PowerPlatform_Dataverse_CodeSamples
 {
     /// <summary>
     /// Demonstrates the Create, Update, Retrieve, and Delete service client methods.

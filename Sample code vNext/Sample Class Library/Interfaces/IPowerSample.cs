@@ -1,7 +1,7 @@
 ﻿using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.Xrm.Sdk;
 
-namespace PowerPlatform.Dataverse.CodeSamples
+namespace PowerPlatform_Dataverse_CodeSamples
 {
     /// <summary>
     /// Defines an interface for a code sample that accesses Power Platform.
@@ -14,7 +14,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
         /// </summary>
         /// <param name="client">Configured web service client.</param>
         /// <returns>Collection of entity instances.</returns>
-        public virtual EntityCollection Setup(ServiceClient client) 
+        public virtual EntityCollection Setup(ServiceClient client)
         { return new EntityCollection(); }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
         /// <param name="client">Configured web service client.</param>
         /// <param name="entityStore">Collection of entity instances.</param>
         /// <returns>True if successful; otherwise false.</returns>
-        public virtual bool Run(ServiceClient client, EntityCollection entityStore) 
+        public virtual bool Run(ServiceClient client, EntityCollection entityStore)
         { return false; }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
         {
             if (client.IsReady && entityStore != null && entityStore.Entities.Count > 0)
             {
-                for(int i = entityStore.Entities.Count-1; i >= 0; i--)
+                for (int i = entityStore.Entities.Count - 1; i >= 0; i--)
                 {
                     Entity entity = entityStore.Entities[i];
 
@@ -46,7 +46,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
                     }
                     catch (System.Exception)
                     {
-                        Console.WriteLine("Failed to delete the {0} with ID {1}.", 
+                        Console.WriteLine("Failed to delete the {0} with ID {1}.",
                             entity.LogicalName, entity.Id);
                         Console.WriteLine("/tReason: " + client.LastException.Message);
                     }

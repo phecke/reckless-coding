@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.Xrm.Sdk;
 
-namespace PowerPlatform.Dataverse.CodeSamples
+namespace PowerPlatform_Dataverse_CodeSamples
 {
     /// <summary>
     /// Demonstrates executing a WhoAmI message request and response.
@@ -23,7 +23,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
         /// <returns>True if successfull; otherwise false</returns>
         public bool Run(ServiceClient client, EntityCollection entityStore)
         {
-            if(_config == null)
+            if (_config == null)
             {
                 Console.WriteLine("Configuration is null.");
                 return false;

@@ -2,7 +2,7 @@
 using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.Xrm.Sdk;
 
-namespace PowerPlatform.Dataverse.CodeSamples
+namespace PowerPlatform_Dataverse_CodeSamples
 {
     /// <summary>
     /// Demonstrates executing a WhoAmI message request and response.
