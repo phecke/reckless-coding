@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>PowerPlatform.Dataverse.CodeSamples</RootNamespace>
+    <RootNamespace>PowerPlatform_Dataverse_CodeSamples</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <OutputType>Library</OutputType>

@@ -2,7 +2,7 @@
 using Microsoft.PowerPlatform.Dataverse.Client;
 using Microsoft.Xrm.Sdk;
 
-namespace PowerPlatform.Dataverse.CodeSamples
+namespace PowerPlatform_Dataverse_CodeSamples
 {
     /// <summary>
     /// Master control program level 1 (basic).
@@ -35,7 +35,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
             mcp mcpApp = new();
 
             // Create a web service client using the default connection string.
-            ServiceClient serviceClient = 
+            ServiceClient serviceClient =
                 new(mcpApp.Configuration.GetConnectionString("default"));
 
             IPowerSample app = new TelemetryUsingILogger(mcpApp.Configuration);
@@ -43,7 +43,7 @@ namespace PowerPlatform.Dataverse.CodeSamples
             EntityCollection entityStore = app.Setup(serviceClient);
 
             if (app.Run(serviceClient, entityStore) == false)
-                Console.WriteLine( typeof(CreateUpdateDelete)
+                Console.WriteLine(typeof(CreateUpdateDelete)
                     + ".Run() method did not complete successfully.");
 
             app.Cleanup(serviceClient, entityStore);

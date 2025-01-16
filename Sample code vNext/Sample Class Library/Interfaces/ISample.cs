@@ -1,4 +1,4 @@
-﻿namespace PowerPlatform.Dataverse.CodeSamples
+﻿namespace PowerPlatform_Dataverse_CodeSamples
 {
     /// <summary>
     /// Defines an interface for a code sample.
